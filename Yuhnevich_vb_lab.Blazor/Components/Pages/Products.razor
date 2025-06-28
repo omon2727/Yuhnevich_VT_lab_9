@@ -1,0 +1,26 @@
+﻿
+
+@page "/products"
+@rendermode InteractiveServer
+@using Yuhnevich_vb_lab.Blazor.Components.ProductComponents
+@using Yuhnevich_vb_lab.Domain.Models
+<CascadingValue Value="ProductService">
+<DishesList DishSelected="ShowDetails" />
+<Pager />
+</CascadingValue>
+<DishDetails Dish="SelectedDish" />
+@code {
+[Inject] IProductService<Dish> ProductService { get; set; }
+[Parameter]
+public Dish SelectedDish { get; set; }
+protected override async Task OnInitializedAsync()
+{
+await ProductService.GetProducts();
+}
+void ShowDetails(int id)
+{
+SelectedDish = ProductService.Products.First(d => d.Id == id);
+}
+}
+
+<DishDetails Dish="SelectedDish" />

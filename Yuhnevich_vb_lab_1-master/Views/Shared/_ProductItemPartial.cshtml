@@ -1,0 +1,13 @@
+﻿@model Yuhnevich_vb_lab.Domain.Entities.Dish
+
+<div class="col-md-4 col-sm-6 col-12">
+    <div class="card mb-4">
+        <img src="@(Model.Image ?? "/images/placeholder.jpg")" class="card-img-top" style="max-height: 200px; object-fit: cover; width: 100%;" alt="@Model.Name">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <p class="card-text">@Model.Description</p>
+            <p class="card-text"><strong>Цена:</strong> @Model.Price ₽</p>
+            <p class="card-text"><strong>Категория:</strong> @Model.Category?.Name</p>
+        </div>
+    </div>
+</div>
